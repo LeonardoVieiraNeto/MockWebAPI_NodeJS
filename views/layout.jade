@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+   .container
+    nav
+     ul
+      li
+       a(href='/') Estude Mais
+      li
+       a(href='/alunos/add') Adicionar Aluno
+      li
+       a(href='/alunos/list') Alunos
+    != messages()
+    block content
+    footer
+     p Exemplo de uso do MockApi &copy; 2018
