@@ -4,9 +4,14 @@
  * Module dependencies.
  */
 
+//console.log('1 dentro do www.js');
+
 var app = require('../app');
-var debug = require('debug')('nodeblog:server');
+//console.log('2 dentro do www.js');
+var debug = require('debug')('mockApiNodeJS:server');
+//console.log('3 dentro do www.js');
 var http = require('http');
+//console.log('4 dentro do www.js');
 
 /**
  * Get port from environment and store in Express.

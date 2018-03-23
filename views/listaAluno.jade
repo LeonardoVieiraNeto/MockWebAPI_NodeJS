@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= title
+
+  </br>
+
+  table(width='740', align='left', cellpadding='0', cellspacing='0', border='1')
+    thead
+      tr
+        th 
+        th Id
+        th Nome
+        th Logradouro
+        th Número
+        th Bairro
+        th Cidade
+        th Estado
+    tbody
+       each item in alunos
+        tr
+          td 
+            a(href='../alunos/delete/' + item.Id) Deletar
+          td(align='center')= item.Id
+          td(align='center')= item.Nome
+          td(align='center')= item.Logradouro
+          td(align='center')= item.Numero
+          td(align='center')= item.Bairro
+          td(align='center')= item.Cidade
+          td(align='center')= item.Estado
+
+

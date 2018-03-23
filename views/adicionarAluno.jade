@@ -1,0 +1,36 @@
+extends layout
+
+block content
+	h1=title
+	ul.errors
+		if errors
+			each error, i in errors
+				li.alert.alert-danger #{error.msg}
+	</br>
+	form(method='post', action='/alunos/adicionar', enctype="multipart/form-data")
+		.form-group
+			label Nome:
+			input.form-control(name='nome', type='text')
+		.form-group
+			label Logradouro:
+			input.form-control(name='logradouro', type='text')
+		.form-group
+			label Número:
+			input.form-control(name='numero', type='text')
+		.form-group
+			label Bairro:
+			input.form-control(name='bairro', type='text')
+		.form-group
+			label Cidade:
+			input.form-control(name='cidade', type='text')
+		.form-group
+			label Estado
+			select.form-control(name='estado')
+				option(value='MG', selected='MG') MG
+				option(value='ES', selected='ES') ES
+				option(value='PB', selected='PB') PB
+				option(value='RJ', selected='RJ') RJ
+				option(value='SP', selected='SP') SP
+		input.btn.btn-default(name='submit',type='submit',value='Cancelar',style='align:center;')
+		&nbsp;&nbsp;
+		input.btn.btn-default(name='submit',type='submit',value='Salvar',style='align:center;')

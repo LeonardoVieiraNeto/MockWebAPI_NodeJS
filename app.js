@@ -8,14 +8,24 @@ var session = require('express-session');
 var multer = require('multer');
 var upload = multer({ dest: 'uploads/' })
 var expressValidator = require('express-validator');
+//var mongoose = require('mongoose');
+
+//console.log('1 dentro do app.js');
 
 var mongo = require('mongodb');
-var db = require('monk')('localhost/nodeblog');
+//console.log('2 dentro do app.js');
+var db = require('monk')('localhost/mockApiNodeJS');
+//console.log('3 dentro do app.js');
+//mongoose.connect('mongodb://localhost/mockApiNodeJS');
+
+//var db = mongoose.connection;
 
 var routes = require('./routes/index');
-var posts = require('./routes/posts');
-var categories = require('./routes/categories');
+//console.log('Log no app.js 2');
+var alunos = require('./routes/alunos');
+//var categories = require('./routes/categories');
 
+//console.log('Log no app.js 3');
 var app = express();
 
 app.locals.moment = require('moment');
@@ -37,12 +47,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//console.log('Log no app.js 4');
+
 // Express Session
 app.use(session({
     secret: 'secret',
     saveUninitialized: true,
     resave: true
 }));
+
+//console.log('Log no app.js 5');
 
 // Express Validator
 app.use(expressValidator({
@@ -75,16 +89,25 @@ app.use(function(req,res,next){
     next();
 });
 
+//console.log('Log no app.js 6');
+
 app.use('/', routes);
-app.use('/posts', posts);
-app.use('/categories', categories);
+app.use('/alunos', alunos);
+//app.use('/categories', categories);
+
+//console.log('Log no app.js 7');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  //console.log('Log no app.js 8');
   var err = new Error('Not Found');
+  //console.log('Log no app.js 9');
   err.status = 404;
+  //console.log('Log no app.js 10');
   next(err);
 });
+
+//console.log('Log no app.js 11');
 
 // error handlers
 
@@ -110,5 +133,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
+//console.log('Log no app.js 8');
 
 module.exports = app;
