@@ -71,16 +71,10 @@ router.post('/adicionar', upload.single('mainimage'), function(req, res, next) {
   {
   	var request=require("request");
 
-  	console.log('Dentro do salvar 1');
-
-	var data = '{ "Nome": "Nome inserido pela Tela", "Logradouro": "Logradouro inserido pela Tela", "Numero": "763", "Bairro": "Bairro inserido pela Tela", "Cidade": "Cidade inserido pela Tela", "Estado": "Estado inserido pela Tela" }';
-
-    console.log(data);
+	var data = '{ "Nome": "' + nome + '", "Logradouro": "' + logradouro +  '", "Numero": "' + numero + '", "Bairro": "' + bairro + '", "Cidade": "' + cidade + '", "Estado": "' + estado + '"}';
 
     var json_obj = JSON.parse(data);
    
-    console.log(json_obj);
-
     request.post({
         headers: {'content-type':'application/json'},
         url:'http://5aa957004cf36300144e962c.mockapi.io/api/v1/alunos/',
@@ -93,37 +87,12 @@ router.post('/adicionar', upload.single('mainimage'), function(req, res, next) {
 		}
 		else
 		{
-			console.log('Dentro do post 3');
-
 			//EXIBI A MENSAGEM DE EXCLUSÃO E RECARREGAR A TELA. 
 			req.flash('success', 'Aluno salvo com sucesso!');
 			res.redirect('/alunos/listaAluno');
-
-			console.log('Salvou certinho');
 		}
 
   });
-
-
- //  	request.post('http://5aa957004cf36300144e962c.mockapi.io/api/v1/alunos/' + req.params.id, function(error,response,body){
-		
- //  		console.log('Dentro do post 2');
-
-	// 	if(error){
-	// 		req.flash('Aconteceu algo de errado ao excluir o aluno!');
-	// 		console.log(error);
-	// 	}
-	// 	else
-	// 	{
-	// 		console.log('Dentro do post 3');
-
-	// 		//EXIBI A MENSAGEM DE EXCLUSÃO E RECARREGAR A TELA. 
-	// 		req.flash('success', 'Aluno salvo com sucesso!');
-	// 		res.redirect('/alunos/listaAluno');
-
-	// 		console.log('Salvou certinho');
-	// 	}
-	// });	
   }
 });
 
